@@ -6,10 +6,14 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <title>Maxafy</title>
 <meta name="description" content="Maxafy – Software, Simulationen und Spiele von Christoph Maxa: JES – Java Ecosystem Simulator und CannaBeeZ World.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+/* Schriften liegen direkt auf maxafy.at (keine Verbindung zu Google). Lizenz: SIL Open Font License, siehe assets/fonts/OFL-*.txt */
+@font-face { font-family: "Michroma"; src: url("assets/fonts/michroma-400.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-400.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-500.woff") format("woff"); font-weight: 500 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/jetbrains-mono-400.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/jetbrains-mono-500.woff") format("woff"); font-weight: 500 600; font-style: normal; font-display: swap; }
+
 /* Layout: dunkle Bühne wie das Logo – Banner oben, darunter je eine Projektkarte pro Marke (Studios blau, Games cannabis-grün), blaues Licht als Markenakzent */
 :root {
   --night: #01040d;      /* Hintergrund des Logos */
@@ -175,6 +179,13 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
 .imprint dl div { display: grid; gap: 2px; min-width: 0; }
 .imprint dt { font: 500 11px/1.4 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; }
 .imprint dd { margin: 0; color: var(--chrome); }
+.privacy { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.privacy h2 { margin: 0 0 18px; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--chrome); }
+.privacy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px 40px; }
+.privacy-grid > div { min-width: 0; }
+.privacy h3 { margin: 0 0 6px; font: 500 11px/1.4 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mist); }
+.privacy p { margin: 0; font-size: 13px; line-height: 1.6; max-width: 62ch; }
+.privacy a { color: var(--chrome); }
 
 @media (max-width: 820px) {
   .intro, .about, .card { grid-template-columns: minmax(0, 1fr); }
@@ -356,7 +367,7 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Christoph Maxa · <a href="#impressum">Impressum</a></span>
+    <span>© 2026 Christoph Maxa · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></span>
     <span class="tagline">Maximize your <em>Experience</em></span>
   </div>
   <div class="wrap imprint" id="impressum">
@@ -367,6 +378,31 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
       <div><dt>Wohnort</dt><dd>Wien, Österreich</dd></div>
       <div><dt>Inhalt der Website</dt><dd>Präsentation eigener Software- und Spieleprojekte</dd></div>
     </dl>
+  </div>
+  <div class="wrap privacy" id="datenschutz">
+    <h2>Datenschutz</h2>
+    <div class="privacy-grid">
+      <div>
+        <h3>Verantwortlich</h3>
+        <p>Christoph Maxa, Wien, Österreich. Kontakt über <a href="https://github.com/DonMaxa" target="_blank" rel="noopener">github.com/DonMaxa</a>.</p>
+      </div>
+      <div>
+        <h3>Hosting über GitHub Pages</h3>
+        <p>Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc. (San Francisco, USA). Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene Seite und Browserangaben in Server-Logs, um die Seite auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage ist das berechtigte Interesse an einem sicheren und funktionierenden Webauftritt (Art. 6 Abs. 1 lit. f DSGVO). Die Übermittlung in die USA stützt sich auf das EU-US Data Privacy Framework. Details: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+      </div>
+      <div>
+        <h3>Keine Cookies, kein Tracking</h3>
+        <p>Diese Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Werkzeuge und hat keine Formulare. Schriften und Bilder liegen direkt auf dieser Website. Es werden keine Inhalte von Drittanbietern nachgeladen.</p>
+      </div>
+      <div>
+        <h3>Externe Links</h3>
+        <p>Links zu anderen Seiten, etwa zu GitHub, öffnen fremde Websites. Erst wenn du einen solchen Link anklickst, gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+      </div>
+      <div>
+        <h3>Deine Rechte</h3>
+        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Beschwerden kannst du bei der österreichischen Datenschutzbehörde einbringen (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a>).</p>
+      </div>
+    </div>
   </div>
 </footer>
 
