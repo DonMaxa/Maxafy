@@ -166,6 +166,9 @@ h2 { margin: 0 0 28px; font: 400 clamp(22px, 3vw, 30px)/1.25 var(--f-display); l
 .contact h2 { margin-bottom: 8px; }
 .contact p { margin: 0; color: var(--mist); max-width: 50ch; }
 .ghost { background: transparent; color: var(--chrome); border: 1px solid rgba(30,155,255,.6); box-shadow: none; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.contact-actions .btn { text-transform: none; letter-spacing: .02em; font-size: 15px; }
+.imprint dd a { color: var(--chrome); text-decoration-color: var(--glow); text-underline-offset: 3px; }
 
 footer { border-top: 1px solid var(--line); padding-block: 32px 40px; color: var(--mist); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
@@ -357,9 +360,12 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
         <div>
           <p class="label">Kontakt</p>
           <h2>Lust auf Austausch?</h2>
-          <p>Am schnellsten erreichst du mich über GitHub.</p>
+          <p>Schreib mir eine E-Mail oder schau auf GitHub vorbei.</p>
         </div>
-        <a class="btn ghost" href="https://github.com/DonMaxa" target="_blank" rel="noopener">github.com/DonMaxa</a>
+        <div class="contact-actions">
+          <a class="btn js-mail" href="#kontakt">office&#64;maxafy.at</a>
+          <a class="btn ghost" href="https://github.com/DonMaxa" target="_blank" rel="noopener">github.com/DonMaxa</a>
+        </div>
       </div>
     </div>
   </section>
@@ -376,6 +382,7 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
     <dl>
       <div><dt>Medieninhaber</dt><dd>Christoph Maxa</dd></div>
       <div><dt>Wohnort</dt><dd>Wien, Österreich</dd></div>
+      <div><dt>E-Mail</dt><dd><a class="js-mail" href="#impressum">office&#64;maxafy.at</a></dd></div>
       <div><dt>Inhalt der Website</dt><dd>Präsentation eigener Software- und Spieleprojekte</dd></div>
     </dl>
   </div>
@@ -384,7 +391,7 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
     <div class="privacy-grid">
       <div>
         <h3>Verantwortlich</h3>
-        <p>Christoph Maxa, Wien, Österreich. Kontakt über <a href="https://github.com/DonMaxa" target="_blank" rel="noopener">github.com/DonMaxa</a>.</p>
+        <p>Christoph Maxa, Wien, Österreich. E-Mail: <a class="js-mail" href="#datenschutz">office&#64;maxafy.at</a></p>
       </div>
       <div>
         <h3>Hosting über GitHub Pages</h3>
@@ -405,6 +412,13 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
     </div>
   </div>
 </footer>
+<script>
+  /* E-Mail-Link erst im Browser zusammensetzen – erschwert das Auslesen durch Spam-Programme */
+  (function () {
+    var addr = ["office", "maxafy.at"].join("@");
+    document.querySelectorAll(".js-mail").forEach(function (a) { a.href = "mailto:" + addr; });
+  })();
+</script>
 
 </body>
 </html>
