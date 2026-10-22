@@ -23,6 +23,7 @@
   --mist: #93a6c2;       /* Fließtext gedämpft */
   --glow: #1e9bff;       /* Leuchtblau – Maxafy / Maxafy Studios */
   --glow-soft: rgba(30,155,255,.16);
+  --gold: #f2b544;       /* goldener Ring des neuen Logos */
   --leaf: #3fd474;       /* CannaBeeZ / Maxafy Games: Cannabis-Grün */
   --leaf-light: #9ef0b4; /* helle Blattspitzen */
   --leaf-deep: #178a45;  /* tiefes Blattgrün */
@@ -51,7 +52,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand img { width: 38px; height: auto; filter: drop-shadow(0 0 10px rgba(30,155,255,.45)); }
+.brand img { width: 40px; height: 40px; border-radius: 50%; filter: drop-shadow(0 0 10px rgba(30,155,255,.45)); }
 .brand span { font: 400 15px/1 var(--f-display); letter-spacing: .28em; }
 .nav { display: flex; gap: 22px; flex-wrap: wrap; }
 .nav a { text-decoration: none; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--mist); transition: color .2s; }
@@ -59,12 +60,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glow); outline-
 
 /* Banner */
 .hero { position: relative; }
-.hero img { display: block; width: 100%; max-width: 100%; height: auto; max-height: 78vh; object-fit: cover; object-position: center 45%; }
+.hero picture, .hero img { display: block; width: 100%; max-width: 100%; height: auto; }
 .hero::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 40%;
   background: linear-gradient(to bottom, transparent, var(--night)); pointer-events: none;
 }
-.hero-glow { height: 2px; background: linear-gradient(90deg, transparent, var(--glow), transparent); box-shadow: 0 0 24px 4px var(--glow-soft); opacity: .9; }
+.hero-glow { height: 2px; background: linear-gradient(90deg, transparent, var(--glow) 30%, var(--gold) 50%, var(--glow) 70%, transparent); box-shadow: 0 0 24px 4px var(--glow-soft); opacity: .9; }
 
 .intro { padding-block: 56px 24px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: end; }
 .intro h1 { margin: 0; font: 400 clamp(26px, 4.2vw, 44px)/1.2 var(--f-display); letter-spacing: .02em; text-wrap: balance; }
@@ -147,6 +148,7 @@ h2 { margin: 0 0 28px; font: 400 clamp(22px, 3vw, 30px)/1.25 var(--f-display); l
 
 /* Bereiche */
 .realms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.realm-logo { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; margin-bottom: 18px; border: 1px solid var(--line); }
 .realm { --accent: var(--glow); padding: 26px; border-top: 2px solid var(--accent); background: linear-gradient(to bottom, var(--deep), transparent); }
 .realm.games { --accent: var(--leaf); }
 .realm .domain { font: 500 13px/1 var(--f-mono); color: var(--accent); letter-spacing: .04em; }
@@ -156,7 +158,7 @@ h2 { margin: 0 0 28px; font: 400 clamp(22px, 3vw, 30px)/1.25 var(--f-display); l
 
 /* Über mich */
 .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 48px; align-items: center; }
-.about figure { margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.about figure { margin: 0 auto; width: 100%; max-width: 380px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 60px -10px rgba(30,155,255,.55); }
 .about figure img { display: block; width: 100%; height: auto; }
 .about p { margin: 0 0 16px; max-width: 60ch; }
 .about p.lead { font-size: 20px; color: var(--chrome); }
@@ -211,7 +213,6 @@ footer a { text-decoration-color: var(--glow); text-underline-offset: 3px; }
 }
 @media (max-width: 480px) {
   .brand span { display: none; }
-  .hero img { max-height: none; }
 }
 /* Sicherheitsnetz: die Seite selbst scrollt nie seitlich */
 html, body { overflow-x: clip; }
@@ -222,7 +223,7 @@ html, body { overflow-x: clip; }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#start" aria-label="Maxafy Startseite">
-      <img src="assets/maxafy-m.png" alt="">
+      <img src="assets/maxafy-icon-64.png" alt="">
       <span>MAXAFY</span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation">
@@ -235,7 +236,10 @@ html, body { overflow-x: clip; }
 
 <main id="start">
   <div class="hero">
-    <img src="assets/maxafy-hero.jpg" alt="Maxafy – Maximize your Experience: Logo vor einer futuristischen Stadt in den Bergen bei Sonnenaufgang">
+    <picture>
+      <source media="(max-width: 700px)" srcset="assets/maxafy-hero-16x9.jpg">
+      <img src="assets/maxafy-banner-wide.jpg" width="2000" height="667" alt="Maxafy – Maximize your Experience: Logo vor einer futuristischen Stadt in den Bergen bei Sonnenaufgang">
+    </picture>
   </div>
   <div class="hero-glow"></div>
 
@@ -333,16 +337,19 @@ html, body { overflow-x: clip; }
       <h2>Drei Adressen, ein Name</h2>
       <div class="realms">
         <div class="realm">
+          <img class="realm-logo" src="assets/maxafy-logo-dark.jpg" alt="Maxafy Logo" loading="lazy">
           <span class="domain">maxafy.at</span>
           <h3>Maxafy</h3>
           <p>Die Startseite. Hier laufen alle Projekte zusammen.</p>
         </div>
         <div class="realm">
+          <img class="realm-logo" src="assets/maxafy-studios-logo.jpg" alt="Maxafy Studios Logo" loading="lazy">
           <span class="domain">maxafystudios.at</span>
           <h3>Maxafy Studios</h3>
           <p>Software und Simulationen, aktuell <a href="#jes">JES</a>.</p>
         </div>
         <div class="realm games">
+          <img class="realm-logo" src="assets/maxafy-games-logo.jpg" alt="Maxafy Games Logo" loading="lazy">
           <span class="domain">maxafygames.at</span>
           <h3>Maxafy Games</h3>
           <p>Spiele, aktuell <a href="#cannabeez-world">CannaBeeZ World</a>.</p>
@@ -353,7 +360,7 @@ html, body { overflow-x: clip; }
 
   <section id="ueber-mich">
     <div class="wrap about">
-      <figure><img src="assets/maxafy-logo.jpg" alt="Maxafy Logo mit dem Leitspruch Maximize your Experience"></figure>
+      <figure><img src="assets/maxafy-icon.jpg" alt="Maxafy Zeichen: das M im goldenen Ring" loading="lazy"></figure>
       <div>
         <p class="label">Über mich</p>
         <h2>Christoph Maxa</h2>
@@ -405,11 +412,15 @@ html, body { overflow-x: clip; }
       </div>
       <div>
         <h3>Hosting über GitHub Pages</h3>
-        <p>Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc. (San Francisco, USA). Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene Seite und Browserangaben in Server-Logs, um die Seite auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage ist das berechtigte Interesse an einem sicheren und funktionierenden Webauftritt (Art. 6 Abs. 1 lit. f DSGVO). Die Übermittlung in die USA stützt sich auf das EU-US Data Privacy Framework. Details: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+        <p>Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc. (San Francisco, USA). Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene Seite und Browserangaben in Server-Logs, um die Seite auszuliefern und vor Angriffen zu schützen. Auf diese Logs habe ich keinen Zugriff; wie lange GitHub sie speichert, regelt GitHub selbst. Rechtsgrundlage ist das berechtigte Interesse an einem sicheren und funktionierenden Webauftritt (Art. 6 Abs. 1 lit. f DSGVO). Die Übermittlung in die USA stützt sich auf das EU-US Data Privacy Framework. Details: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
       </div>
       <div>
         <h3>Keine Cookies, kein Tracking</h3>
         <p>Diese Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Werkzeuge und hat keine Formulare. Schriften und Bilder liegen direkt auf dieser Website. Es werden keine Inhalte von Drittanbietern nachgeladen.</p>
+      </div>
+      <div>
+        <h3>Kontakt per E-Mail</h3>
+        <p>Wenn du mir eine E-Mail schreibst, verarbeite ich deine Adresse und den Inhalt nur, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. b bzw. f DSGVO). Die Nachrichten liegen beim E-Mail-Anbieter World4you in Österreich und werden gelöscht, sobald sie nicht mehr gebraucht werden, außer gesetzliche Aufbewahrungspflichten stehen dem entgegen. Eine Weitergabe an Dritte erfolgt nicht.</p>
       </div>
       <div>
         <h3>Externe Links</h3>
